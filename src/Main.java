@@ -5,6 +5,7 @@ public class Main {
         CurrencyXMLParser parser = new CurrencyXMLParser();
         Map<String, Double> rates = parser.parse();
         CurrencyCalculator calc = new CurrencyCalculator(rates);
+
         System.out.println(calc.convertFromEUR(56.67, CurrencyEnum.USD));
     }
 }

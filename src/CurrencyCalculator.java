@@ -43,20 +43,18 @@ enum CurrencyEnum{
 }
 
 public class CurrencyCalculator {
-
     private final Map<String, Double> currencyRates;
 
-    public CurrencyCalculator(Map<String, Double> currencyRates)
-    {
+    public CurrencyCalculator(Map<String, Double> currencyRates) {
         this.currencyRates = currencyRates;
     }
-    public double convertFromEUR(double value, CurrencyEnum currency)
-    {
-        return round(value * currencyRates.get(currency.val));
+
+    public double convertFromEUR(double value, CurrencyEnum currency) {
+        double result = value * currencyRates.get(currency.val);
+        return round(result);
     }
 
-    private double round(double value)
-    {
+    private double round(double value) {
         BigDecimal bd = new BigDecimal(value);
         bd = bd.setScale(2, RoundingMode.HALF_UP);
         return bd.doubleValue();
